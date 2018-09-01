@@ -1,0 +1,34 @@
+{
+  "name": "zimmed-pathfinder",
+  "version": "1.0.0",
+  "description": "Bi-directional pathfinding for specific 2D tile-grid.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "node ./node_modules/.bin/babel src --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zimmed/zimmed-pathhfinder.git"
+  },
+  "keywords": [
+    "a-star",
+    "a*",
+    "astar",
+    "pathfinding",
+    "nba*",
+    "nba-star",
+    "nbastar"
+  ],
+  "author": "zimmed@zimmed.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zimmed/zimmed-pathhfinder/issues"
+  },
+  "homepage": "https://github.com/zimmed/zimmed-pathhfinder#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-1": "^6.24.1"
+  }
+}

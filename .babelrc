@@ -1,0 +1,13 @@
+{
+  "comments": false,
+  "presets": [
+    "env",
+    "stage-1"
+  ],
+  "env": {
+    "development": {
+      "retainLines": true,
+      "sourceMaps": true
+    }
+  }
+}
