@@ -1,6 +1,6 @@
 {
   "name": "zimmed-pathfinder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bi-directional pathfinding for specific 2D tile-grid.",
   "main": "lib/index.js",
   "scripts": {

@@ -75,10 +75,12 @@ import Pathfinder from 'zimmed-pathfinder/src';
 
 ### Build from source
 
-`$ git clone https://github.com/zimmed/zimmed-pathfinder.git`
-`$ cd zimmed-pathfinder`
-`$ npm i`
-`$ npm run build`
+```
+$ git clone https://github.com/zimmed/zimmed-pathfinder.git
+$ cd zimmed-pathfinder
+$ npm i
+$ npm run build
+```
 
 ### License
 
