@@ -2,14 +2,9 @@
 
 Adapted from https://github.com/anvaka/ngraph.path and streamlined for a specific project I'm developing.
 
-Shameless plug: https://www.patreon.com/divination
-Still in the very early stages, but I'll be posting more about the development quite soon.
-
 Using this NBAStar implementation got the pathfinding time for my game world (including post-processing) to ~0.2ms average, and ~0.5ms when requesting a blocked node as the end point.
 
 Although this implementation is specific, you might be able to use it, or at least find it a helpful reference when rolling your own A* functions.
-
-Do what thou Wilt.
 
 ### Installation
 
