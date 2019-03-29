@@ -47,7 +47,8 @@ export default class GreedyAStar {
     return this.closestNeighbor(grid, neighbors[0].pos, neighbors[0].tile, from, heuristic);
   }
 
-  static search(grid, [ i2, j2 ], [ i1, j1 ], { heuristic=heuristics.manhattan, timeout=TIMEOUT }={}) {
+  static search(grid, [ i2, j2 ], [ i1, j1 ], { heuristic='manhattan', timeout=TIMEOUT }={}) {
+    const h = heuristics.get(heuristic);
     const from = grid[i1][j1];
     let to = grid[i2][j2];
     let iFinal = i2;
@@ -55,7 +56,7 @@ export default class GreedyAStar {
 
     if (from === to) return NO_PATH;
 
-    if (!to.weight) [ iFinal, jFinal, to ] = this.closestNeighbor(grid, iFinal, jFinal, from, heuristic);
+    if (!to.weight) [ iFinal, jFinal, to ] = this.closestNeighbor(grid, iFinal, jFinal, from, h);
 
     if (from === to) return NO_PATH;
     pool.reset();
@@ -70,11 +71,11 @@ export default class GreedyAStar {
     let currentOpener = BY_FROM;
     let minFrom, minTo, current, i, j, potentialLMin, tentativeDistance, neighbor, target, newFScore;
 
-    startNode.fScore = heuristic(from, to);
+    startNode.fScore = h(from, to);
     startNode.distanceToSource = 0;
     openSetFrom.push(startNode);
     startNode.open = BY_FROM;
-    endNode.fScore = heuristic(to, from);
+    endNode.fScore = h(to, from);
     endNode.distanceToSource = 0;
     openSetTo.push(endNode);
     endNode.open = BY_TO;
@@ -116,7 +117,7 @@ export default class GreedyAStar {
           tentativeDistance = current.distanceToSource + DISTANCE(neighbor.node, current.node);
           if (tentativeDistance >= neighbor.distanceToSource) continue;
           target = (currentOpener === BY_FROM) ? to : from;
-          newFScore = tentativeDistance + heuristic(neighbor.node, target);
+          newFScore = tentativeDistance + h(neighbor.node, target);
           if (newFScore >= lMin) continue;
           neighbor.fScore = newFScore;
     

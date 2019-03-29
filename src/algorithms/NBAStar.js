@@ -45,7 +45,8 @@ export default class NBAStar {
     return this.closestNeighbor(grid, neighbors[0].pos, neighbors[0].tile, from, heuristic);
   }
 
-  static search(grid, [ i2, j2 ], [ i1, j1 ], { heuristic=heuristics.manhattan, timeout=TIMEOUT, quitFast }={}) {
+  static search(grid, [ i2, j2 ], [ i1, j1 ], { heuristic='manhattan', timeout=TIMEOUT, quitFast }={}) {
+    const h = heuristics.get(heuristic);
     const from = grid[i1][j1];
     let to = grid[i2][j2];
     let iFinal = i2;
@@ -53,7 +54,7 @@ export default class NBAStar {
 
     if (from === to) return NO_PATH;
 
-    if (!to.weight) [ iFinal, jFinal, to ] = this.closestNeighbor(grid, iFinal, jFinal, from, heuristic);
+    if (!to.weight) [ iFinal, jFinal, to ] = this.closestNeighbor(grid, iFinal, jFinal, from, h);
 
     if (from === to) return NO_PATH;
     pool.reset();
@@ -64,7 +65,7 @@ export default class NBAStar {
     const startNode = pool.createNewNBAState(from, i1, j1);
     const endNode = pool.createNewNBAState(to, iFinal, jFinal);
     let lMin = Infinity;
-    let f1 = heuristic(from, to);
+    let f1 = h(from, to);
     let f2 = f1;
     let minNode, cameFrom, currentSet, tentativeDistance, pKey, fKey, gKey,
         hKey, endpoint, startpoint, f, neighbor, potentialMin, i, j;
@@ -103,7 +104,7 @@ export default class NBAStar {
       
       if (!cameFrom.closed) {
         cameFrom.closed = true;
-        if (cameFrom[fKey] < lMin && (cameFrom[gKey] + f - heuristic(startpoint, cameFrom.node)) < lMin) {
+        if (cameFrom[fKey] < lMin && (cameFrom[gKey] + f - h(startpoint, cameFrom.node)) < lMin) {
           for (i = -1; i < 2; i++) {
             for (j = -1; j < 2; j++) {
               if (!j && !i) continue;
@@ -114,7 +115,7 @@ export default class NBAStar {
 
               if (tentativeDistance < neighbor[gKey]) {
                 neighbor[gKey] = tentativeDistance;
-                neighbor[fKey] = tentativeDistance + heuristic(neighbor.node, endpoint);
+                neighbor[fKey] = tentativeDistance + h(neighbor.node, endpoint);
                 neighbor[pKey] = cameFrom;
                 if (neighbor[hKey] < 0) currentSet.push(neighbor);
                 else currentSet.updateItem(neighbor[hKey]);
