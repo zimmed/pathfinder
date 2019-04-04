@@ -1,4 +1,4 @@
-# zimmed-pathfinder
+# zimmed/pathfinder
 
 Adapted from https://github.com/anvaka/ngraph.path and streamlined for a specific project I'm developing.
 
