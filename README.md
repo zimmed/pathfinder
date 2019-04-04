@@ -8,13 +8,19 @@ Although this implementation is specific, you might be able to use it, or at lea
 
 ### Installation
 
-`$ npm i --save zimmed-pathfinder`
+`$ npm i --save zimmed/pathfinder`
 
 ### Usage
 
 ```javascript
-import Pathfinder from 'zimmed-pathfinder';
+// TS/ES6+ Imports
+import Pathfinder from '@zimmed/pathfinder';
 
+// Node
+const Pathfinder = require('@zimmed/pathfinder').default;
+```
+
+```javascript
 const createTile = (x, y, { weight=1, ...data }={}) => ({ x, y, weight, ...data });
 const createGrid = (rows, cols, configurationMap={}) => Array(rows).fill(0).map(
   (_, i) => Array(cols).fill(0).map(
@@ -37,8 +43,6 @@ console.log(path ? path.join(' <- ') : 'no path'); // 44,44 <- ... <- 40,38
 
 #### If you like instantiating everything, for some reason:
 ```javascript
-import Pathfinder from 'zimmed-pathfinder';
-
 const pathFinder = Pathfinder.create('NBAStar', { quitFast: true }); // Or new Pathfinder(...)
 const createTile = (x, y, { weight=1, ...data }={}) => ({ x, y, weight, ...data });
 const createGrid = (rows, cols, configurationMap={}) => Array(rows).fill(0).map(
@@ -63,18 +67,10 @@ console.log(path ? path.join(' <- ') : 'no path'); // 98,98 <- ... <- 90,86
 ### Include source to use your own transpilation rules
 
 ```javascript
-import Pathfinder from 'zimmed-pathfinder/src';
+import Pathfinder from '@zimmed/pathfinder/src';
+// const Pathfinder = require('@zimmed/pathfinder/src').default;
 
 ...
-```
-
-### Build from source
-
-```
-$ git clone https://github.com/zimmed/zimmed-pathfinder.git
-$ cd zimmed-pathfinder
-$ npm i
-$ npm run build
 ```
 
 ### License
