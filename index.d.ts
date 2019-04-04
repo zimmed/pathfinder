@@ -1,3 +1,5 @@
+export { default } from './src';
+
 type Algorithm = 'NBAStar' | 'GreedyAStar';
 
 type Heuristic = 'manhattan' | 'euclid';
