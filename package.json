@@ -4,7 +4,7 @@
   "description": "Bi-directional pathfinding for specific 2D tile-grid.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npx babel src --out-dir lib",
+    "build": "npx babel-cli src --out-dir lib",
     "precommit": "npm run build",
     "install": "npm run build"
   },
