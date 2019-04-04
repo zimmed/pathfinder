@@ -1,4 +1,4 @@
-export { default } from './src';
+export { default } from './lib';
 
 type Algorithm = 'NBAStar' | 'GreedyAStar';
 
@@ -33,7 +33,7 @@ interface ITile {
 }
 
 
-declare module 'zimmed-pathfinder' {
+declare module '@zimmed/pathfinder' {
 
   export default class Pathfinder {
     public static create(alg: Algoirthm = 'NBAStar', opts: IOpts = {}): Pathfinder;
